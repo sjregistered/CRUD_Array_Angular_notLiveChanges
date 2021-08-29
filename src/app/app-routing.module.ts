@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
+import { CRUDComponent } from './logged-in/crud/crud.component';
+ 
+const routes: Routes = [
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: 'crud', component: CRUDComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

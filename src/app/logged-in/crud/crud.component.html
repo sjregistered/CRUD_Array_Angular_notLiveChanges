@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h1 style="text-align: center;" class="login-logout"> Log in and CRUD operations</h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h4>{{ title }}</h4>
+      </div>
+      <div class="col-md-4">
+        <div class="alert alert-success alert-dismissible" *ngIf="msg">
+          <a href="#" class="close" (click)="clickMe()">&times;</a>
+          {{ msg }}
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <hr>
+    <h2> CREATE DATA </h2>
+    <form class="form" #myForm="ngForm">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="model.Email">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="model.password">
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="addData()"> Submit </button>
+    </form>
+
+    <br>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th width=400 class="heading" scope="col">Email</th>
+          <th width=400 class="heading" scope="col">Password</th>
+          <th width=200 class="heading" scope="col">Edit</th>
+          <th width=200 class="heading" scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let datas of data; let Index = index">
+          <td> {{ datas.Email }}</td>
+          <td> {{ datas.password }}</td>
+          <td><button type="submit" class="btn btn-success" (click)="editData(Index)"> Edit </button></td>
+          <td><button type="submit" class="btn btn-danger" (click)="deleteData(Index)"> Delete </button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2> UPDATE DATA </h2>
+    <form class="form" #myForm="ngForm">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="model2.Email">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="model2.password">
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="updateData()"> Update </button>
+    </form>
+  </div>
+
+</body>
+
+</html>
